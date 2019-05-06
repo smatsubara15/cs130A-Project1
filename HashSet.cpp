@@ -31,7 +31,7 @@ void HashSet::insert(const std::string& value){
     rehash();
   while(slots[index]!=NULL && *slots[index]!=value && index<nslots){
     index++;
-    index=index%nslots;
+    //    index=index%nslots;
   }
   if(slots[index]==NULL){
     nitems++;
