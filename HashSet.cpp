@@ -30,7 +30,8 @@ void HashSet::insert(const std::string& value){
   //if (loadFactor>0.5)
   if(nslots==nitems)
     rehash();
-  while(slots[index]!=NULL && *slots[index]!=value){
+  while(slots[index]!=NULL){
+	//&& *slots[index]!=value){
     index++;
     index=index%nslots;
   }
@@ -47,9 +48,11 @@ void HashSet::rehash(){
   for(int i=0;i<nslots;i++){
     if(slots[i]!=NULL){
       tempArray[index]=*slots[i];
+      delete slots[i];
       index++;
     }
   }
+  delete [] slots;
   this->nslots=(this->nslots)*2;
   this->slots=new std::string* [nslots];
   this->intfn=new SquareRootHash(1,nslots);
