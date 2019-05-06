@@ -73,3 +73,8 @@ bool BloomFilter::lookup(const std::string& value) const{
     return false;
 }
     
+//void BloomFilter::print(){
+  //for (int i=0; i<m; i++){
+    //std::cout<<bits[i]<<std::endl;
+    //}
+  //}
