@@ -18,21 +18,21 @@ BloomFilter::BloomFilter(int k, int m, std::string strfn, std::string intfn){
   else{
     std::cerr<<"Invalid string function"<<std::endl;
   }
-  //this->intfns=new IntegerHash*[k];
+  this->intfns=new IntegerHash*[k];
   if(intfn=="division"){
-    this->intfns=new DivisionHash*[k];
+    //this->intfns=new DivisionHash*[k];
     for(int i=0;i<k;i++){
       intfns[i]=new DivisionHash(i,m);
     }
   }
   else if(intfn=="reciprocal"){
-    this->intfns=new ReciprocalHash*[k];
+    //this->intfns=new ReciprocalHash*[k];
     for(int i=0;i<k;i++){
       intfns[i]=new ReciprocalHash(i,m);
     }
   }
   else if(intfn=="squareroot"){
-    this->intfns=new SquareRootHash*[k];
+    //this->intfns=new SquareRootHash*[k];
     for(int i=0;i<k;i++){
       intfns[i]=new SquareRootHash(i,m);
     }
