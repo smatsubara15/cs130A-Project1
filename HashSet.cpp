@@ -71,10 +71,10 @@ bool HashSet::lookup(const std::string& value) const{
     return false;
 }
 
-void HashSet::print(){
-  for (int i=0;i<nslots;i++){
+//void HashSet::print(){
+  //for (int i=0;i<nslots;i++){
     //    if(slots[i]!=NULL){
-      std::cout<<&slots[i]<<std::endl;
+    //std::cout<<&slots[i]<<std::endl;
       //}
-  }
-}
+      // }
+  //}
