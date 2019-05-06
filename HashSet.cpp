@@ -4,7 +4,7 @@
 HashSet::HashSet(){
   this->nitems=0;
   this->nslots=100;
-  this->intfn=new SquareRootHash(1,nslots);
+  this->intfn=new SquareRootHash(1,this->nslots);
   this->strfn=new JenkinsHash;
   this->strfn2=new JenkinsHash;
   this->slots=new std::string* [nslots];
@@ -26,12 +26,13 @@ HashSet::~HashSet(){
 void HashSet::insert(const std::string& value){
   uint64_t temp=strfn->hash(value);
   int index=intfn->hash(temp);
-  double loadFactor=static_cast<double>(nitems)/static_cast<double>(nslots);
-  if (loadFactor>0.5)
+  //double loadFactor=static_cast<double>(nitems)/static_cast<double>(nslots);
+  //if (loadFactor>0.5)
+  if(nslots==nitems)
     rehash();
-  while(slots[index]!=NULL && *slots[index]!=value && index<nslots){
+  while(slots[index]!=NULL && *slots[index]!=value){
     index++;
-    //    index=index%nslots;
+    index=index%nslots;
   }
   if(slots[index]==NULL){
     nitems++;
