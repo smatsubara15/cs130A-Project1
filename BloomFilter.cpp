@@ -18,7 +18,7 @@ BloomFilter::BloomFilter(int k, int m, std::string strfn, std::string intfn){
   else{
     std::cerr<<"Invalid string function"<<std::endl;
   }
-  //this->intfns=new IntegerHash*;
+  this->intfns=new IntegerHash*[k];
   if(intfn=="division"){
     //this->intfns=new *DivisionHash[k];
     for(int i=0;i<k;i++){
