@@ -46,6 +46,8 @@ void HashSet::rehash(){
     }
   }
   this->nslots=(this->nslots)*2;
+  this->slots=new std::string* [nslots];
+  this->intfn=new SquareRootHash(1,nslots);
   for(int i=0;i<nitems;i++){
     insert(tempArray[i]);
   }
