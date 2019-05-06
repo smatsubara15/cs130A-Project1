@@ -29,7 +29,7 @@ void HashSet::insert(const std::string& value){
   double loadFactor=static_cast<double>(nitems)/static_cast<double>(nslots);
   if (loadFactor>0.5)
     rehash();
-  while(slots[index]!=NULL && *slots[index]!=value){
+  while(slots[index]!=NULL && *slots[index]!=value && index!=nslots){
     index++;
     index=index%nslots;
   }
