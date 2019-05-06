@@ -25,11 +25,11 @@ HashSet::~HashSet(){
 
 void HashSet::insert(const std::string& value){
   uint64_t temp=strfn->hash(value);
-  uint64_t index=intfn->hash(temp);
+  int index=intfn->hash(temp);
   double loadFactor=static_cast<double>(nitems)/static_cast<double>(nslots);
   if (loadFactor>0.5)
     rehash();
-  while(slots[index]!=NULL && *slots[index]!=value && index!=nslots){
+  while(slots[index]!=NULL && *slots[index]!=value && index<nslots){
     index++;
     index=index%nslots;
   }
