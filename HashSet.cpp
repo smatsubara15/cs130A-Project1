@@ -1,4 +1,5 @@
 #include "HashSet.h"
+#include <iostream>
 
 HashSet::HashSet(){
   this->nitems=0;
@@ -7,6 +8,8 @@ HashSet::HashSet(){
   this->strfn=new JenkinsHash;
   this->strfn2=new JenkinsHash;
   this->slots=new std::string* [nslots];
+  for(int i=0;i<nslots;i++)
+    slots[i]=NULL;
 }
 
 HashSet::~HashSet(){
@@ -32,6 +35,7 @@ void HashSet::insert(const std::string& value){
   }
   if(slots[index]==NULL){
     nitems++;
+    //    const std::string* tempString=value;
     slots[index]=new std::string(value);
   }
 }
@@ -65,4 +69,12 @@ bool HashSet::lookup(const std::string& value) const{
       }
     }
     return false;
+}
+
+void HashSet::print(){
+  for (int i=0;i<nslots;i++){
+    //    if(slots[i]!=NULL){
+      std::cout<<&slots[i]<<std::endl;
+      //}
+  }
 }
