@@ -50,11 +50,14 @@ void HashSet::rehash(){
   delete [] slots;
   this->nslots=(this->nslots)*2;
   this->slots=new std::string* [nslots];
+  for(int i=0;i<nslots;i++)
+    slots[i]=NULL;
   this->intfn=new SquareRootHash(1,nslots);
-  for(int i=0;i<nitems;i++){
+  for(int i=0;i<index;i++){
     insert(tempArray[i]);
   }
 }
+
 
 bool HashSet::lookup(const std::string& value) const{
     uint64_t temp=strfn->hash(value);
