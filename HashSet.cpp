@@ -28,13 +28,11 @@ void HashSet::insert(const std::string& value){
   if (loadFactor>0.5)
     rehash();
   while(slots[index]!=NULL){
-	//&& *slots[index]!=value){
     index++;
     index=index%nslots;
   }
   if(slots[index]==NULL){
     nitems++;
-    //    const std::string* tempString=value;
     slots[index]=new std::string(value);
   }
 }
@@ -72,10 +70,3 @@ bool HashSet::lookup(const std::string& value) const{
     return false;
 }
 
-//void HashSet::print(){
-  //for (int i=0;i<nslots;i++){
-    //    if(slots[i]!=NULL){
-    //std::cout<<&slots[i]<<std::endl;
-      //}
-      // }
-  //}
