@@ -9,8 +9,6 @@ BloomFilter::BloomFilter(int k, int m, std::string strfn, std::string intfn){
   for(int i=0;i<m;i++){
     bits[i]=0;
   }
-  //std::transform(strfn.begin(),strfn.end(),strfn.begin(), ::tolower);
-  //std::transform(intfn.begin(),intfn.end(),intfn.begin(), ::tolower);
   if(strfn=="jenkins")
     this->strfn=new JenkinsHash;
     else if(strfn=="pearson")
@@ -20,13 +18,11 @@ BloomFilter::BloomFilter(int k, int m, std::string strfn, std::string intfn){
     }
   this->intfns=new IntegerHash*[k];
   if(intfn=="division"){
-    //this->intfns=new DivisionHash*[k];
     for(int i=0;i<k;i++){
       intfns[i]=new DivisionHash(i,m);
     }
   }
   else if(intfn=="reciprocal"){
-	//this->intfns=new ReciprocalHash*[k];
     for(int i=0;i<k;i++){
       intfns[i]=new ReciprocalHash(i,m);
     }
@@ -73,8 +69,3 @@ bool BloomFilter::lookup(const std::string& value) const{
     return false;
 }
     
-//void BloomFilter::print(){
-  //for (int i=0; i<m; i++){
-    //std::cout<<bits[i]<<std::endl;
-    //}
-  //}
